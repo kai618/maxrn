@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, createRef } from 'react'
 import {
     Text,
     View,
@@ -6,11 +6,13 @@ import {
     StyleSheet,
     TextInput,
     FlatList,
+    Button,
 } from 'react-native'
-import GoalInput from './src/components/GoalInput'
+import GoalInputModal from './src/components/GoalInputModal'
 import GoalItem from './src/components/GoalItem'
 
 export default function App() {
+    const addModal = createRef();
     const [goalList, setgoalList] = useState([])
 
     const addGoal = (goal) => {
@@ -28,7 +30,8 @@ export default function App() {
 
     return (
         <SafeAreaView style={styles.container}>
-            <GoalInput onAddGoal={addGoal} />
+            <Button title='ADD' onPress={() => addModal.current.open()} />
+            <GoalInputModal ref={addModal} onAddGoal={addGoal} />
 
             <FlatList
                 data={goalList}
