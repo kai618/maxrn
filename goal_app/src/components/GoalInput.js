@@ -4,6 +4,7 @@ import {
     StyleSheet,
     TextInput,
     Button,
+    Modal,
 } from 'react-native'
 
 export default function GoalInput({ onAddGoal }) {
