@@ -3,13 +3,21 @@ import {
     Text,
     View,
     StyleSheet,
+    TouchableOpacity,
 } from 'react-native'
 
-export default function GoadItem({ content }) {
+export default function GoadItem({ id, content, onDelete }) {
+
+    const deleteSelf = () => {
+        onDelete(id)
+    }
+
     return (
-        <View style={styles.wrapper}>
-            <Text style={styles.content}>{content}</Text>
-        </View>
+        <TouchableOpacity onLongPress={deleteSelf}>
+            <View style={styles.wrapper}>
+                <Text style={styles.content}>{content}</Text>
+            </View>
+        </TouchableOpacity>
     )
 }
 

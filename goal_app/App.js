@@ -14,7 +14,16 @@ export default function App() {
     const [goalList, setgoalList] = useState([])
 
     const addGoal = (goal) => {
-        setgoalList((currentList) => [...currentList, goal])
+        setgoalList((currentList) => [
+            ...currentList,
+            { id: Date.now(), content: goal }
+        ])
+    }
+
+    const deleteGoal = (id) => {
+        setgoalList((currentList) => {
+            return currentList.filter(e => e.id !== id)
+        })
     }
 
     return (
@@ -23,8 +32,14 @@ export default function App() {
 
             <FlatList
                 data={goalList}
-                renderItem={({ item }) => (<GoalItem content={item} />)}
-                keyExtractor={(item, index) => index}
+                renderItem={({ item }) => (
+                    <GoalItem
+                        id={item.id}
+                        content={item.content}
+                        onDelete={deleteGoal}
+                    />
+                )}
+                keyExtractor={(item, index) => item.id}
             />
         </SafeAreaView>
     )

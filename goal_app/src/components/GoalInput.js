@@ -16,7 +16,7 @@ export default function GoalInput({ onAddGoal }) {
         setValid(verifyText(text))
     }
 
-    // testable
+    /** TEST */
     const verifyText = (text) => {
         if (text.trim() == '') return false
         return true
