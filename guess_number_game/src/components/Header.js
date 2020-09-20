@@ -14,7 +14,7 @@ export default class Header extends React.Component {
     }
 
     componentWillUnmount() {
-        Dimensions.removeEventListener(this._onChangeOrientation)
+        Dimensions.removeEventListener('change', this._onChangeOrientation)
     }
 
     _onChangeOrientation = ({ screen }) => {
