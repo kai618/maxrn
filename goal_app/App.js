@@ -12,25 +12,25 @@ import GoalInputModal from './src/components/GoalInputModal'
 import GoalItem from './src/components/GoalItem'
 
 export default function App() {
-    const addModal = createRef();
+    const addModal = createRef()
     const [goalList, setgoalList] = useState([])
 
     const addGoal = (goal) => {
         setgoalList((currentList) => [
             ...currentList,
-            { id: Date.now(), content: goal }
+            { id: Date.now().toString(), content: goal },
         ])
     }
 
     const deleteGoal = (id) => {
         setgoalList((currentList) => {
-            return currentList.filter(e => e.id !== id)
+            return currentList.filter((e) => e.id !== id)
         })
     }
 
     return (
         <SafeAreaView style={styles.container}>
-            <Button title='ADD' onPress={() => addModal.current.open()} />
+            <Button title="ADD" onPress={() => addModal.current.open()} />
             <GoalInputModal ref={addModal} onAddGoal={addGoal} />
 
             <FlatList
@@ -53,5 +53,3 @@ const styles = StyleSheet.create({
         flex: 1,
     },
 })
-
-

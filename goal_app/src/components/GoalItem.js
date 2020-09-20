@@ -1,13 +1,7 @@
 import React from 'react'
-import {
-    Text,
-    View,
-    StyleSheet,
-    TouchableOpacity,
-} from 'react-native'
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native'
 
 export default function GoadItem({ id, content, onDelete }) {
-
     const deleteSelf = () => {
         onDelete(id)
     }
@@ -29,9 +23,8 @@ const styles = StyleSheet.create({
         borderWidth: 0.5,
         borderColor: 'grey',
         borderRadius: 5,
-
     },
     content: {
         fontSize: 18,
-    }
+    },
 })

@@ -1,14 +1,7 @@
-import React, { useState } from 'react'
-import {
-    View,
-    StyleSheet,
-    TextInput,
-    Button,
-    Modal,
-} from 'react-native'
+import React from 'react'
+import { View, StyleSheet, TextInput, Button, Modal } from 'react-native'
 
 export default class GoalInputModal extends React.Component {
-
     state = {
         value: '',
         valid: false,
@@ -43,25 +36,25 @@ export default class GoalInputModal extends React.Component {
     render() {
         return (
             <Modal
-                animationType='fade'
+                animationType="fade"
                 visible={this.state.visible}
                 transparent={true}
             >
                 <View style={styles.modal}>
                     <View style={styles.wrapper}>
-                        <TextInput style={styles.inputField}
+                        <TextInput
+                            style={styles.inputField}
                             value={this.state.value}
                             onChangeText={this.changeText}
                         />
                         <Button
-                            title='ADD'
+                            title="ADD"
                             onPress={this.addGoal}
                             disabled={!this.state.valid}
-                            color='white'
+                            color="white"
                         />
                     </View>
                 </View>
-
             </Modal>
         )
     }
