@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, Dimensions } from 'react-native'
+import { StyleSheet, Text, View, Dimensions, Platform } from 'react-native'
 import { statusBarHeight, headerHeight } from '../commons/Constants'
 
 export default class Header extends React.Component {
@@ -17,8 +17,8 @@ export default class Header extends React.Component {
         Dimensions.removeEventListener('change', this._onChangeOrientation)
     }
 
-    _onChangeOrientation = ({ screen }) => {
-        const { height, width } = screen
+    _onChangeOrientation = ({ window }) => {
+        const { height, width } = window
         this.setState({ isPortrait: height > width })
     }
 
@@ -28,10 +28,14 @@ export default class Header extends React.Component {
                 style={[
                     styles.header,
                     {
-                        height: this.state.isPortrait
-                            ? headerHeight + statusBarHeight
-                            : headerHeight,
-                        paddingTop: this.state.isPortrait ? statusBarHeight : 0,
+                        height:
+                            Platform.OS === 'ios' && this.state.isPortrait
+                                ? headerHeight + statusBarHeight
+                                : headerHeight,
+                        paddingTop:
+                            Platform.OS === 'ios' && this.state.isPortrait
+                                ? statusBarHeight
+                                : 0,
                     },
                 ]}
             >
