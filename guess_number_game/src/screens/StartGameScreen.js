@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { Text, StyleSheet, View, Button, TextInput } from 'react-native'
+import { Text, StyleSheet, View, Button, Alert, Keyboard } from 'react-native'
 import Card from '../components/Card'
 import Colors from '../commons/Colors'
 import NumberInput from '../components/NumberInput'
+import ConfirmCard from '../components/ConfirmCard'
 
 export default class StartGameScreen extends Component {
     state = {
@@ -22,11 +23,24 @@ export default class StartGameScreen extends Component {
 
     confirm = () => {
         const number = parseInt(this.state.input)
-        if (isNaN(number)) return
+        if (!this.checkInput(number)) return
 
         this.setState({ confirmed: true })
         this.setState({ number })
         this.setInput('')
+        Keyboard.dismiss()
+    }
+
+    checkInput(num) {
+        if (isNaN(num) || num <= 0 || num > 99) {
+            Alert.alert(
+                'Invalid Number!',
+                'The number must be between 1 and 99',
+                [{ text: 'OK', style: 'destructive', onPress: this.reset }]
+            )
+            return false
+        }
+        return true
     }
 
     render() {
@@ -52,7 +66,9 @@ export default class StartGameScreen extends Component {
                         </View>
                     </View>
                 </Card>
-                {this.state.confirmed && <Text>Chosen Number: {this.state.number}</Text>}
+                {this.state.confirmed && (
+                    <ConfirmCard number={this.state.number} />
+                )}
             </View>
         )
     }
