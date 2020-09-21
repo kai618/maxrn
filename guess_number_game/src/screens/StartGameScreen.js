@@ -1,20 +1,58 @@
 import React, { Component } from 'react'
 import { Text, StyleSheet, View, Button, TextInput } from 'react-native'
 import Card from '../components/Card'
+import Colors from '../commons/Colors'
+import NumberInput from '../components/NumberInput'
 
 export default class StartGameScreen extends Component {
+    state = {
+        input: '',
+        confirmed: false,
+        number: NaN,
+    }
+
+    setInput = (input) => {
+        this.setState({ input })
+    }
+
+    reset = () => {
+        this.setInput('')
+        this.setState({ confirmed: false })
+    }
+
+    confirm = () => {
+        const number = parseInt(this.state.input)
+        if (isNaN(number)) return
+
+        this.setState({ confirmed: true })
+        this.setState({ number })
+        this.setInput('')
+    }
+
     render() {
         return (
             <View style={styles.screen}>
                 <Text style={styles.title}>Start a New Game!</Text>
                 <Card style={styles.card}>
                     <Text style={styles.text}>Select a Number</Text>
-                    <TextInput style={styles.input} />
+                    <NumberInput
+                        value={this.state.input}
+                        onChange={this.setInput}
+                    />
                     <View style={styles.buttons}>
-                        <Button title="Reset" />
-                        <Button title="Confirm" />
+                        <View style={styles.button}>
+                            <Button
+                                title="Reset"
+                                color={Colors.primary}
+                                onPress={this.reset}
+                            />
+                        </View>
+                        <View style={styles.button}>
+                            <Button title="Confirm" onPress={this.confirm} />
+                        </View>
                     </View>
                 </Card>
+                {this.state.confirmed && <Text>Chosen Number: {this.state.number}</Text>}
             </View>
         )
     }
@@ -35,18 +73,12 @@ const styles = StyleSheet.create({
         width: 300,
         maxWidth: '80%',
     },
-    input: {
-        width: '80%',
-        alignSelf: 'center',
-        textAlign: 'center',
-        fontSize: 20,
-        backgroundColor: '#eee',
-        borderRadius: 5,
-        margin: 10,
-        padding: 5,
-    },
+
     buttons: {
         flexDirection: 'row',
         justifyContent: 'space-around',
+    },
+    button: {
+        width: 90,
     },
 })

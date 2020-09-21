@@ -1,6 +1,14 @@
 import React from 'react'
-import { StyleSheet, Text, View, Dimensions, Platform } from 'react-native'
+import {
+    StyleSheet,
+    Text,
+    View,
+    Dimensions,
+    Platform,
+    StatusBar,
+} from 'react-native'
 import { statusBarHeight, headerHeight } from '../commons/Constants'
+import Colors from '../commons/Colors'
 
 export default class Header extends React.Component {
     constructor(props) {
@@ -39,6 +47,7 @@ export default class Header extends React.Component {
                     },
                 ]}
             >
+                <StatusBar backgroundColor={Colors.primary_dark} />
                 <Text style={styles.title}>{this.props.title}</Text>
             </View>
         )
@@ -47,7 +56,7 @@ export default class Header extends React.Component {
 
 const styles = StyleSheet.create({
     header: {
-        backgroundColor: '#f7287b',
+        backgroundColor: Colors.primary,
         justifyContent: 'center',
         alignItems: 'center',
     },
