@@ -11,6 +11,7 @@ import {
 import { ScreenNames } from '../commons/Route'
 import Category from '../models/Category'
 import { CATEGORIES } from '../repos/data'
+import AdaptionHandler from '../services/AdaptionHandler'
 
 export default class CategoriesScreen extends Component {
     /**
@@ -35,11 +36,16 @@ export default class CategoriesScreen extends Component {
 
     renderGridItem = ({ item }) => {
         return (
-            <TouchableOpacity onPress={() => this.toCategoryMealScreen(item)} style={{ flex: 1 }}>
-                <View style={[styles.gridItem, { backgroundColor: item.color }]}>
-                    <Text>{item.title}</Text>
-                </View>
-            </TouchableOpacity>
+            <View style={{ flex: 1 }}>
+                <AdaptionHandler.AppTouchable
+                    onPress={() => this.toCategoryMealScreen(item)}
+                    style={{ flex: 1 }}
+                >
+                    <View style={[styles.gridItem, { backgroundColor: item.color }]}>
+                        <Text>{item.title}</Text>
+                    </View>
+                </AdaptionHandler.AppTouchable>
+            </View>
         )
     }
 }
@@ -52,12 +58,19 @@ const styles = StyleSheet.create({
     grid: {
         flexGrow: 1,
         justifyContent: 'space-evenly',
-        padding: 5,
+        padding: 10,
     },
     gridItem: {
-        height: Dimensions.get('window').width / 2 - 20,
+        height: 0.5 * (Dimensions.get('window').width - 60),
         margin: 10,
         padding: 10,
         borderRadius: 10,
+
+        elevation: 1,
+
+        shadowColor: '#000',
+        shadowOpacity: 0.2,
+        shadowRadius: 3,
+        shadowOffset: { height: 1, width: 1 },
     },
 })
