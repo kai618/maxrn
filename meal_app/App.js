@@ -1,10 +1,7 @@
 import React from 'react'
 import { Text, View } from 'react-native'
+import AppStack from './src/navigation/MealsNavigator'
 
-import CategoriesScreen from './src/screens/CategoriesScreen'
-
-const App = () => {
-    return <CategoriesScreen />
+export default App = () => {
+    return <AppStack />
 }
-
-export default App
