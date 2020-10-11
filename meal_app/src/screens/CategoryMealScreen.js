@@ -1,11 +1,16 @@
 import React, { Component } from 'react'
-import { Text, StyleSheet, View, SafeAreaView } from 'react-native'
+import { SafeAreaView, StyleSheet, Text } from 'react-native'
 
 export default class CategoryMealScreen extends Component {
+    constructor(props) {
+        super(props)
+        this.catId = this.props.route.params.id
+    }
+
     render() {
         return (
             <SafeAreaView>
-                <Text> CategoryMealScreen </Text>
+                <Text> {this.catId} </Text>
             </SafeAreaView>
         )
     }
