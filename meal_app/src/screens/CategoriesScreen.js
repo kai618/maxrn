@@ -1,13 +1,5 @@
 import React, { Component } from 'react'
-import {
-    Dimensions,
-    FlatList,
-    SafeAreaView,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
-} from 'react-native'
+import { Dimensions, FlatList, SafeAreaView, StyleSheet, Text, View } from 'react-native'
 import { ScreenNames } from '../commons/Route'
 import Category from '../models/Category'
 import { CATEGORIES } from '../repos/data'
@@ -37,10 +29,7 @@ export default class CategoriesScreen extends Component {
     renderGridItem = ({ item }) => {
         return (
             <View style={{ flex: 1 }}>
-                <AdaptionHandler.AppTouchable
-                    onPress={() => this.toCategoryMealScreen(item)}
-                    style={{ flex: 1 }}
-                >
+                <AdaptionHandler.AppTouchable onPress={() => this.toCategoryMealScreen(item)}>
                     <View style={[styles.gridItem, { backgroundColor: item.color }]}>
                         <Text>{item.title}</Text>
                     </View>
