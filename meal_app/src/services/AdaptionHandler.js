@@ -1,4 +1,8 @@
-import { Platform, TouchableNativeFeedback, TouchableOpacity } from 'react-native'
+import {
+    Platform,
+    TouchableNativeFeedback,
+    TouchableOpacity,
+} from 'react-native'
 
 class AdaptionHanlder {
     constructor() {

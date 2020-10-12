@@ -1,17 +1,3 @@
-<<<<<<< HEAD
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
-
-const CategoriesScreen = () => {
-    return (
-        <View style={styles.screen}>
-            <Text>CategoriesScreen</Text>
-        </View>
-    )
-}
-
-export default CategoriesScreen
-=======
 import React, { Component } from 'react'
 import { Dimensions, FlatList, SafeAreaView, StyleSheet, Text, View } from 'react-native'
 import { ScreenNames } from '../commons/Route'
@@ -52,13 +38,10 @@ export default class CategoriesScreen extends Component {
         )
     }
 }
->>>>>>> c1b70f5ac7f076231c584e2ad5863f8d93e8eccb
 
 const styles = StyleSheet.create({
     screen: {
         flex: 1,
-<<<<<<< HEAD
-=======
         backgroundColor: 'white',
     },
     grid: {
@@ -78,6 +61,5 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.2,
         shadowRadius: 3,
         shadowOffset: { height: 1, width: 1 },
->>>>>>> c1b70f5ac7f076231c584e2ad5863f8d93e8eccb
     },
 })
