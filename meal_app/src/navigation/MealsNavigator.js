@@ -13,7 +13,7 @@ const Stack = createStackNavigator()
 const AppStack = () => (
     <NavigationContainer>
         <Stack.Navigator
-            initialRouteName="Categories Screen"
+            initialRouteName={ScreenNames.FilterScreen}
             screenOptions={{
                 headerBackTitleVisible: false,
             }}
