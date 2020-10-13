@@ -9,102 +9,57 @@ import {
     TouchableWithoutFeedback,
     Touchable,
 } from 'react-native'
+import { ScrollView } from 'react-native-gesture-handler'
+import { CartPopoverButton } from '../components/CartPopoverButton'
 
 export default class FilterScreen extends React.Component {
-    render() {
+    renderButton = () => {
         return (
-            <PopoverButton
-                setButton={(showPopover) => (
-                    <TouchableOpacity onPress={showPopover}>
-                        <View style={{ height: 50, width: 150, backgroundColor: 'skyblue' }} />
-                    </TouchableOpacity>
-                )}
-                setPopover={<Text>Hi</Text>}
-            />
+            <View>
+                <TouchableOpacity onPress={() => {}}>
+                    <View style={{ padding: 16, flexDirection: 'row', alignItems: 'center' }}>
+                        <Text style={{ paddingLeft: 16 }}>Add new address</Text>
+                    </View>
+                </TouchableOpacity>
+            </View>
         )
     }
-}
-
-class PopoverButton extends React.Component {
-    static defaultProps = {
-        setPopover: <View />,
-        /**
-         * @param {Function} showPopover
-         */
-        setButton: (showPopover) => <View />,
-    }
-
-    popoverRef = createRef()
-
-    state = {
-        position: null,
-    }
-
-    getPosition = () => {
-        this.buttonRef.measure((x, y, width, height, pageX, pageY) => {
-            this.setState({ position: { width, height, pageX, pageY } })
-        })
-    }
-
-    showPopover = () => this.popoverRef.current.show()
 
     render() {
         return (
-            <SafeAreaView style={{ alignItems: 'center', justifyContent: 'center' }}>
-                <View ref={(ref) => (this.buttonRef = ref)} onLayout={this.getPosition}>
-                    {this.props.setButton(this.showPopover)}
-                </View>
-                {this.state.position && (
-                    <Popover ref={this.popoverRef} position={this.state.position}>
-                        {this.props.setPopover}
-                    </Popover>
-                )}
-            </SafeAreaView>
+            <ScrollView>
+                <View style={{ height: 300 }} />
+                <CartPopoverButton
+                    data={[
+                        { id: 0, name: 'Home' },
+                        { id: 1, name: 'Work' },
+                        { id: 2, name: 'Apartment' },
+                    ]}
+                    renderButtonText={(item) => item.name}
+                    renderPopoverItemText={(item) => item.name}
+                    bottomComponent={this.renderButton()}
+                />
+                <View style={{ height: 300 }} />
+                <CartPopoverButton
+                    data={[
+                        { id: 0, name: 'Home' },
+                        { id: 1, name: 'Work' },
+                        { id: 2, name: 'Apartment' },
+                    ]}
+                    renderButtonText={(item) => item.name}
+                    renderPopoverItemText={(item) => item.name}
+                />
+                <View style={{ height: 300 }} />
+                <CartPopoverButton
+                    data={[
+                        { id: 0, name: 'Home' },
+                        { id: 1, name: 'Work' },
+                        { id: 2, name: 'Apartment' },
+                    ]}
+                    renderButtonText={(item) => item.name}
+                    renderPopoverItemText={(item) => item.name}
+                />
+            </ScrollView>
         )
     }
 }
-
-class Popover extends React.Component {
-    constructor(props) {
-        super(props)
-
-        const position = this.props.position
-        this.offset = { x: position.pageX, y: position.pageY + position.height }
-    }
-
-    state = {
-        visible: this.props.visible || false,
-    }
-
-    setVisible = (visible) => this.setState({ visible })
-
-    show = () => this.setVisible(true)
-
-    hide = () => this.setVisible(false)
-
-    render() {
-        return (
-            <Modal
-                visible={this.state.visible}
-                animationType="fade"
-                onRequestClose={this.hide}
-                transparent={true}
-            >
-                <TouchableWithoutFeedback onPress={this.hide}>
-                    <View style={styles.overlay} />
-                </TouchableWithoutFeedback>
-                <View style={{ top: this.offset.y, left: this.offset.x }}>
-                    {this.props.children}
-                </View>
-            </Modal>
-        )
-    }
-}
-
-const styles = StyleSheet.create({
-    overlay: {
-        width: '100%',
-        height: '100%',
-        position: 'absolute',
-    },
-})
