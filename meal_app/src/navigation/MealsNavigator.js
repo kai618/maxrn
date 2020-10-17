@@ -33,8 +33,14 @@ const AppStack = () => (
                     headerStyle: { backgroundColor: route.params.color },
                 })}
             />
+            <Stack.Screen
+                name={ScreenNames.MealDetailScreen}
+                component={MealDetailScreen}
+                options={({ route }) => ({
+                    title: route.params.meal.title,
+                })}
+            />
             <Stack.Screen name={ScreenNames.FilterScreen} component={FilterScreen} />
-            <Stack.Screen name={ScreenNames.MealDetailScreen} component={MealDetailScreen} />
             <Stack.Screen name={ScreenNames.FavoritesScreen} component={FavoritesScreen} />
         </Stack.Navigator>
     </NavigationContainer>

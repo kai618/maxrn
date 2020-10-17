@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { SafeAreaView, StyleSheet, Text, View, FlatList } from 'react-native'
+import { ScreenNames } from '../commons/Route'
 
 import {
     NavigationState,
@@ -27,10 +28,20 @@ const CategoryMealScreen = ({ navigation, route }) => {
      * @param {object} param
      * @param {Meal} param.item
      */
-    const renderItem = ({ item }) => <MealItem meal={item} />
+    const renderItem = ({ item }) => (
+        <MealItem meal={item} onPress={() => toMealDetailScreen(item)} />
+    )
+
+    /**
+     *
+     * @param {Meal} meal
+     */
+    const toMealDetailScreen = (meal) => {
+        navigation.navigate(ScreenNames.MealDetailScreen, { meal })
+    }
 
     return (
-        <SafeAreaView style={{ flex: 1 }}>
+        <SafeAreaView style={styles.screen}>
             <FlatList data={meals} renderItem={renderItem} />
         </SafeAreaView>
     )
@@ -38,4 +49,8 @@ const CategoryMealScreen = ({ navigation, route }) => {
 
 export default CategoryMealScreen
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    screen: {
+        flex: 1,
+    },
+})
