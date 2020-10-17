@@ -1,12 +1,28 @@
 export default class Meal {
+    /**
+     *
+     * @param {string} id
+     * @param {string[]} categoryIds
+     * @param {string} title
+     * @param {string} affordability
+     * @param {string} complexity
+     * @param {string} imageUrl
+     * @param {number} duration
+     * @param {string[]} ingredients
+     * @param {string[]} steps
+     * @param {boolean} isGlutenFree
+     * @param {boolean} isVegan
+     * @param {boolean} isVegetarian
+     * @param {boolean} isLactoseFree
+     */
     constructor(
         id,
         categoryIds,
         title,
         affordability,
         complexity,
-        duration,
         imageUrl,
+        duration,
         ingredients,
         steps,
         isGlutenFree,
@@ -19,8 +35,8 @@ export default class Meal {
         this.title = title
         this.affordability = affordability
         this.complexity = complexity
-        this.duration = duration
         this.imageUrl = imageUrl
+        this.duration = duration
         this.ingredients = ingredients
         this.steps = steps
         this.isGlutenFree = isGlutenFree
