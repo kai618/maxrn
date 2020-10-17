@@ -4,32 +4,31 @@ import { ScreenNames } from '../commons/Route'
 import Category from '../models/Category'
 import { CATEGORIES } from '../repos/data'
 import AdaptionHandler from '../services/AdaptionHandler'
+import { NavigationProp, ParamListBase, NavigationState } from '@react-navigation/native'
 
-export default class CategoriesScreen extends Component {
+/**
+ *
+ * @param {object} object
+ * @param {NavigationProp<ParamListBase, NavigationState>} object.navigation
+ */
+const CategoriesScreen = ({ navigation }) => {
     /**
+     *
      * @param {Category} item
      */
     toCategoryMealScreen = (item) => {
-        this.props.navigation.navigate(ScreenNames.CategoryMealScreen, { ...item })
+        navigation.navigate(ScreenNames.CategoryMealScreen, { ...item })
     }
 
-    render() {
-        return (
-            <SafeAreaView style={styles.screen}>
-                <FlatList
-                    contentContainerStyle={styles.grid}
-                    data={CATEGORIES}
-                    renderItem={this.renderGridItem}
-                    numColumns={2}
-                />
-            </SafeAreaView>
-        )
-    }
-
+    /**
+     *
+     * @param {object} object
+     * @param {Category} object.item
+     */
     renderGridItem = ({ item }) => {
         return (
             <View style={{ flex: 1 }}>
-                <AdaptionHandler.AppTouchable onPress={() => this.toCategoryMealScreen(item)}>
+                <AdaptionHandler.AppTouchable onPress={() => toCategoryMealScreen(item)}>
                     <View style={[styles.gridItem, { backgroundColor: item.color }]}>
                         <Text>{item.title}</Text>
                     </View>
@@ -37,9 +36,31 @@ export default class CategoriesScreen extends Component {
             </View>
         )
     }
+
+    return (
+        <View style={styles.outScreen}>
+            <SafeAreaView style={styles.screen}>
+                <FlatList
+                    contentContainerStyle={styles.grid}
+                    data={CATEGORIES}
+                    renderItem={renderGridItem}
+                    numColumns={2}
+                />
+            </SafeAreaView>
+            <BottomWedgeIPhoneX />
+        </View>
+    )
 }
 
+export default CategoriesScreen
+
+const BottomWedgeIPhoneX = () => <View style={{ height: 35 }}></View>
+
 const styles = StyleSheet.create({
+    outScreen: {
+        flex: 1,
+        backgroundColor: 'skyblue',
+    },
     screen: {
         flex: 1,
         backgroundColor: 'white',

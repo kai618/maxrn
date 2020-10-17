@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { SafeAreaView, StyleSheet, Text } from 'react-native'
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native'
 
 export default class CategoryMealScreen extends Component {
     constructor(props) {
@@ -9,9 +9,11 @@ export default class CategoryMealScreen extends Component {
 
     render() {
         return (
-            <SafeAreaView>
-                <Text> {this.catId} </Text>
-            </SafeAreaView>
+            <View>
+                <SafeAreaView>
+                    <Text> {this.catId} </Text>
+                </SafeAreaView>
+            </View>
         )
     }
 }
