@@ -38,16 +38,13 @@ const CategoriesScreen = ({ navigation }) => {
     }
 
     return (
-        <View style={styles.outScreen}>
-            <SafeAreaView style={styles.screen}>
-                <FlatList
-                    contentContainerStyle={styles.grid}
-                    data={CATEGORIES}
-                    renderItem={renderGridItem}
-                    numColumns={2}
-                />
-            </SafeAreaView>
-            <BottomWedgeIPhoneX />
+        <View style={styles.screen}>
+            <FlatList
+                contentContainerStyle={styles.grid}
+                data={CATEGORIES}
+                renderItem={renderGridItem}
+                numColumns={2}
+            />
         </View>
     )
 }
