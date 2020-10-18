@@ -5,9 +5,7 @@ import Meal from '../models/Meal'
 
 /**
  *
- * @param {object} param
- * @param {Meal} param.meal
- * @param {Function} param.onPress
+ * @param {{meal: Meal, onPress: Function}} param
  */
 const MealItem = ({ meal, onPress }) => {
     return (

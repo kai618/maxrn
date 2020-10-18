@@ -2,22 +2,18 @@ import React, { createRef } from 'react'
 import { Modal, StyleSheet, TouchableWithoutFeedback, View, Dimensions } from 'react-native'
 
 export class PopoverButton extends React.Component {
+    /** @type {{setButton: Function, setPopover: Function}} */
     static defaultProps = {
-        /**
-         * @param {Function} showPopover
-         */
         setButton: (showPopover) => <View />,
-        /**
-         * @param {Function} hidePopover
-         */
         setPopover: (hidePopover) => <View />,
     }
 
-    popoverRef = createRef()
-
+    /** @type {{position: {width: number, height: number, pageX: number, pageY: number}}} */
     state = {
         position: null,
     }
+
+    popoverRef = createRef()
 
     /**
      *
@@ -81,7 +77,7 @@ export class Popover extends React.Component {
 
     /**
      *
-     * @param {object} position { width, height, pageX, pageY }
+     * @param {{width: number, height: number, pageX: number, pageY: number}} position
      */
     calculateInitialOffset = (position) => {
         this.state.offset = {
@@ -115,8 +111,8 @@ export class Popover extends React.Component {
 
     /**
      *
-     * @param {object} prev
-     * @param {object} current
+     * @param {Object} prev
+     * @param {Object} current
      */
     comparePosition = (prev, current) => {
         return prev.pageX !== current.pageX || prev.pageY !== current.pageY

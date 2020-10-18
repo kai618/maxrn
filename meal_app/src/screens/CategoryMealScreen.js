@@ -1,4 +1,9 @@
-import { NavigationProp, NavigationState, ParamListBase, NavigationRouteContext } from '@react-navigation/native'
+import {
+    NavigationProp,
+    NavigationState,
+    ParamListBase,
+    NavigationRouteContext,
+} from '@react-navigation/native'
 import React from 'react'
 import { FlatList, SafeAreaView, StyleSheet } from 'react-native'
 import { ScreenNames } from '../commons/Route'
@@ -8,7 +13,7 @@ import { MEALS } from '../repos/data'
 
 /**
  *
- * @param {object} object
+ * @param {Object} object
  * @param {NavigationProp<ParamListBase, NavigationState>} object.navigation
  * @param {NavigationRouteContext} object.route
  */
@@ -18,8 +23,7 @@ const CategoryMealScreen = ({ navigation, route }) => {
 
     /**
      *
-     * @param {object} param
-     * @param {Meal} param.item
+     * @param {{item: Meal}} param
      */
     const renderItem = ({ item }) => (
         <MealItem meal={item} onPress={() => toMealDetailScreen(item)} />

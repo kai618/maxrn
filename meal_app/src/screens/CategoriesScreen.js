@@ -8,7 +8,7 @@ import { NavigationProp, ParamListBase, NavigationState } from '@react-navigatio
 
 /**
  *
- * @param {object} object
+ * @param {Object} object
  * @param {NavigationProp<ParamListBase, NavigationState>} object.navigation
  */
 const CategoriesScreen = ({ navigation }) => {
@@ -16,16 +16,15 @@ const CategoriesScreen = ({ navigation }) => {
      *
      * @param {Category} item
      */
-    toCategoryMealScreen = (item) => {
+    const toCategoryMealScreen = (item) => {
         navigation.navigate(ScreenNames.CategoryMealScreen, { ...item })
     }
 
     /**
      *
-     * @param {object} object
-     * @param {Category} object.item
+     * @param {{item: Category}} object
      */
-    renderGridItem = ({ item }) => {
+    const renderGridItem = ({ item }) => {
         return (
             <View style={{ flex: 1 }}>
                 <AdaptionHandler.AppTouchable onPress={() => toCategoryMealScreen(item)}>
