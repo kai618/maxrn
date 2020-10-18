@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React from 'react'
-import AppStack from './src/navigation/MealsNavigator'
+import AppNavigator from './src/navigation/MealsNavigator'
 
 export default App = () => {
-    return <AppStack />
+    return <AppNavigator />
 }

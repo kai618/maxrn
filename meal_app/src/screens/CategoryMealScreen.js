@@ -1,17 +1,10 @@
-import React, { Component } from 'react'
-import { SafeAreaView, StyleSheet, Text, View, FlatList } from 'react-native'
+import { NavigationProp, NavigationState, ParamListBase, NavigationRouteContext } from '@react-navigation/native'
+import React from 'react'
+import { FlatList, SafeAreaView, StyleSheet } from 'react-native'
 import { ScreenNames } from '../commons/Route'
-
-import {
-    NavigationState,
-    NavigationProp,
-    NavigationRouteContext,
-    ParamListBase,
-} from '@react-navigation/native'
-
-import { MEALS, CATEGORIES } from '../repos/data'
-import Meal from '../models/Meal'
 import MealItem from '../components/MealItem'
+import Meal from '../models/Meal'
+import { MEALS } from '../repos/data'
 
 /**
  *
