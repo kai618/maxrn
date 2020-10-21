@@ -5,4 +5,5 @@ export const ScreenNames = {
     FavoritesScreen: 'FavoritesScreen',
     FilterScreen: 'FilterScreen',
     MealDetailScreen: 'MealDetailScreen',
+    TestScreen: 'TestScreen',
 }

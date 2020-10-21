@@ -9,6 +9,7 @@ import CategoryMealScreen from '../screens/CategoryMealScreen'
 import FavoritesScreen from '../screens/FavoritesScreen'
 import FilterScreen from '../screens/FilterScreen'
 import MealDetailScreen from '../screens/MealDetailScreen'
+import TestScreen from '../screens/TestScreen'
 
 const BottomTab = createBottomTabNavigator()
 const AppBottomTab = () => (
@@ -41,11 +42,12 @@ export default AppBottomTab
 const Stack = createStackNavigator()
 const MealStack = () => (
     <Stack.Navigator
-        initialRouteName={ScreenNames.CategoriesScreen}
+        initialRouteName={ScreenNames.TestScreen}
         screenOptions={{
             headerBackTitleVisible: false,
         }}
     >
+        <Stack.Screen name={ScreenNames.TestScreen} component={TestScreen} />
         <Stack.Screen
             name={ScreenNames.CategoriesScreen}
             component={CategoriesScreen}
